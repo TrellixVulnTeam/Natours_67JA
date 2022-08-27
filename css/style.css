@@ -95,22 +95,21 @@ EXAMPLE - z-index: 1
   - VENDORS/
 */
 /* 1 rem = 10px*/
-  /*convert pixel to  percentage (10px * 100%)/16px */
+/*convert pixel to  percentage (10px * 100%)/16px */
 /*
 X direction from left to right while Y direction from  top to bottom
  pOSITIVE VALUE MEANS IT GOES TO THE RIGHT WHILE NEGATIVE VALUE MEANS TO THE LEFT
  Things to note with animation : animation-name: moveInLeft;
  animation-duration: 3sec;
  */
- /*CSS declarations marked with !important have the highest priority
+/*CSS declarations marked with !important have the highest priority
     inline styles will always have priority over styles in external stylesheets.
     A selector that contains 1 ID is more specific than one with 1000 classes.
     A selector that contains  1 class is more specific than one with 1000 elements.
     University selector has no specifity value (0,0,0,0)
     Rely more on specifity than on the order of selectors
   */
-
-  /* HOW CSS IS PROCESSED
+/* HOW CSS IS PROCESSED
   font-size is 16px by browser default so 1.5rem * 16px = 24px
   percentage and relative values are always converted to pixel
   percentages are measured relative to their parent's font-size, if used to specify font-size
@@ -121,8 +120,7 @@ X direction from left to right while Y direction from  top to bottom
   vh and vw are simply percentage measurements of the viewports,s height and width  
 
   */
-
-  /*
+/*
   INHERITANCE IN CSS
   Its a way of propagating property values from parent elements to their children
   Example
@@ -143,8 +141,6 @@ X direction from left to right while Y direction from  top to bottom
   - The inherit keyword forces inheritance on a certain property
   - The initial keyword resets a property to its initial value
   */
-
-
 /*WHAT IS SASS
   - Is a Css preprocesser, an extension of Css that adds power and elegance to the basic language
    
@@ -274,24 +270,23 @@ nav {
     background-color: lighten($color-tertiary, 10%);
   }
 }
-
-
 */
-
-*
+/*
+INSTALL SASS LOCALLY
+- Use npm package called node sass
+- Node js allows developers to write and run javascript applications on the server
+//node package manager(npm)-simple command line interface that allows developers to install and manage packages on their local computers
+- install node using nodejs.org
+*/
+*,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 html {
-  font-size: 62.5%;  
-  
-}
-
-
+  font-size: 62.5%; }
 
 body {
   font-family: "Lato" sans-serif;
@@ -300,204 +295,141 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
-    ),
-    url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative;
-}
+  position: relative; }
 
-.header__logo-box{
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem; }
 
-.header__logo{
-    height: 3.5rem;
-}
+.header__logo {
+  height: 3.5rem; }
 
 /*.logo:hover {
   animation: moveInRight 1s ease-out;
 }*/
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; }
 
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
 
-.header__text-box{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /*animation-iteration-count: 3;
+    animation-delay: 3s;*/ }
 
-.heading-primary{
-    color: #fff;
-    text-transform: uppercase;
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-}
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveInRight 1s  ease-out; }
 
-.heading-primary--main{  
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    
-    
-    /*animation-iteration-count: 3;
-    animation-delay: 3s;*/
-}
-
-
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s  ease-out;
-    
-}
-
-
- @keyframes moveInLeft{
-
-0% {
-  opacity: 0;
-  transform: translateX(-10rem);
-}
-
-80% {
-  transform: translateX(1rem);
-}
-
-100% {
-  opacity: 1;
-  transform: translate(0);
-}
-  
-}
-
-
-@keyframes moveInRight{
-
+@keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(10rem);
-  }
-  
+    transform: translateX(-10rem); }
   80% {
-    transform: translateX(-1rem);
-  }
-  
+    transform: translateX(1rem); }
   100% {
     opacity: 1;
-    transform: translate(0);
-  }
-    
-  }
+    transform: translate(0); } }
 
-  @keyframes moveInBottom {
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-    0% {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-    
-    
-    100% {
-      opacity: 1;
-      transform: translate(0);
-    }
-      
-    }
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem; }
 
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 
-  .btn:link,
-  .btn:visited {
-    text-transform: uppercase;
-    text-decoration: none; 
-    padding: 1.5rem 4rem;
-    display: inline-block; 
-    border-radius: 100px; 
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;   
-  }
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-  }
+.btn--white {
+  background-color: #fff;
+  color: #777; }
 
-  .btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2) ;
-  }
+.btn:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
 
-  .btn--white {
-    background-color: #fff;
-    color: #777;
+.btn--white::after {
+  background-color: #fff; }
 
-  }
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; }
 
-  .btn:after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition:  all .4s;
-  }
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; }
 
-  .btn--white::after {
-    background-color: #fff;
-  }
+nav#nav div.pull-right .button {
+  background-color: green; }
 
- .btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6) ;
-  opacity: 0;
- }
+/*# inline-0, IDs-1, Classes-2, Elements-2*/
+a {
+  background-color: purple; }
 
- 
+/*# inline-0, IDs-0, Classes-0, Elements-1*/
+#nav a.button:hover {
+  background-color: yellow; }
 
-  .btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-  }
-
-
-  
-
-  nav#nav div.pull-right .button {  
-    background-color: green;}  # inline-0, IDs-1, Classes-2, Elements-2
-  
-
-    a {
-      background-color: purple;
-    } /*# inline-0, IDs-0, Classes-0, Elements-1*/
-
-    #nav a.button:hover {
-      background-color: yellow;
-    }  /*#inline-0, IDs-1, Classes-2, Elements-1*/
-
-    
+/*#inline-0, IDs-1, Classes-2, Elements-1*/

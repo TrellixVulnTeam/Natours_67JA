@@ -1,0 +1,516 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+  
+Implementing BEM
+- BEM if its an element we use underscore and if its a modifier we use dash dash.
+*/
+/* Its all about pseudo classes and elements
+
+-THE CSS VISUAL FORMATTING MODEL INCLUDES
+1.Dimensions of boxes-the box model
+2.Box type-inline,block and inline-block
+3.Positioning schemes:floats and positioning
+4.Stacking contexts
+5.Other elements in the render tree.
+6.Viewport size, dimensions of images e.t.c
+
+1.THE BOX MODEL
+  -Each box can have margin,padding,border,width,height,content
+  A.content:text,images etc.
+  B.Padding: used to generate whitespace/transparent area around the content,inside the box
+  C.Border:goes around the padding and the content.
+  D.Margin: space between boxes ie if we want spaces between two boxes we use margin
+  E.Fill Area: area that gets filled with background color or backgroung image.
+
+  - The box model with box-sizing: BORDER BOX used to define width and height of the box including the padding and border.
+
+2.BOX TYPES: INLINE, BLOCK-LEVEL AND INLINE-BLOCK.
+ A.Block-level boxes-applies as shown below
+    
+ 1. display: block - elements formatted visually as blocks,100% parents width, vertically one after another, Have line breaks.
+    [display: flex]
+    [display: list-items]
+    [display: table]
+ 
+ 2.display: Inline  - content is distributed in lines, occupies  only content space, no line breaks, no heights and widths, padding and margins only horizontal(left and right),No lines break.
+
+ 3.display: inline-block;
+  - A mix of block and inline
+  - occupies only content's space
+  - no line break
+
+  3.POSITIONING SCHEMES:NORMAL FLOW, ABSOLUTE POSITIONING AND FLOATS.
+   A.Normal flow
+   - default positioning scheme.
+   - not floated.
+   - not absolutely positioned
+   - elements laid out according to their source code
+   DEFAULT
+   position: relative
+
+   B.Floats
+   - elements removed from the normal flow.
+   - text and inline elements will wrap around the floated element.
+   - the container will not adjust its height to the element
+   FLOAT:left
+   FLOAT:right
+
+   C.ABSOLUTE POSITIONING
+   - Elements removed from the normal flow
+   - no impact on surrounding content or elements.
+   - we use top, bottom, left and right to offset the element from its relatively positioned container
+POSITION:ABSOLUTE
+POSITION:FIXED
+
+4.STACKING CONTEXTS
+- Determine in which order elements are rendered on the page.
+- Z-index is mostly used to create stacking contexts
+EXAMPLE - z-index: 1
+          position: relative 
+
+
+  THINK-BUILD-ARCHITECT. 
+  .BEM- BLOCK ELEMENT MODIFIER  
+  - Block is a stand alone component
+  - Element part of a block that has no standalone meaning.
+  - Modifier is a flag that can be put in a block or element.
+     Example:  
+    .block{}
+    .block__element {}
+    .block__element--modifier {}
+
+    ARCHITECT-THE 7-1 PATTERN
+    - 7 different folders for partial Sass files, and 1 main Sass file to import all other files into a compiled CSS stylesheet.
+  THE 7 FOLDERS
+  - BASE/
+  - COMPONENTS/
+  - LAYOUT/
+  - PAGES/
+  - THEMES/
+  - ABSTRACTS/
+  - VENDORS/
+*/
+/* 1 rem = 10px*/
+  /*convert pixel to  percentage (10px * 100%)/16px */
+/*
+X direction from left to right while Y direction from  top to bottom
+ pOSITIVE VALUE MEANS IT GOES TO THE RIGHT WHILE NEGATIVE VALUE MEANS TO THE LEFT
+ Things to note with animation : animation-name: moveInLeft;
+ animation-duration: 3sec;
+ */
+ /*CSS declarations marked with !important have the highest priority
+    inline styles will always have priority over styles in external stylesheets.
+    A selector that contains 1 ID is more specific than one with 1000 classes.
+    A selector that contains  1 class is more specific than one with 1000 elements.
+    University selector has no specifity value (0,0,0,0)
+    Rely more on specifity than on the order of selectors
+  */
+
+  /* HOW CSS IS PROCESSED
+  font-size is 16px by browser default so 1.5rem * 16px = 24px
+  percentage and relative values are always converted to pixel
+  percentages are measured relative to their parent's font-size, if used to specify font-size
+  percentages are measured relative to their parent's width if used to specify lengths
+  em are measured relative to their parent font-size, if used to specify font-size
+  em are measured relative to their current font size,if used to specify lengths
+  rem are always measured relative to the document's root font size
+  vh and vw are simply percentage measurements of the viewports,s height and width  
+
+  */
+
+  /*
+  INHERITANCE IN CSS
+  Its a way of propagating property values from parent elements to their children
+  Example
+  .parent {
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .child { 
+    font-size: 25px;
+  }
+  -Every css property must have a value
+  specified value = cascaded value
+  - inheritance passes the values for some specific properties from parent to children-more maintainable code
+  - properties related to text are inherited: font-family, font-size, color etc
+  - Properties like margin, paddings require more of practical so cant be inherited
+  - inheritance of a property only works if no one declares a value for that property
+  - The inherit keyword forces inheritance on a certain property
+  - The initial keyword resets a property to its initial value
+  */
+
+
+/*WHAT IS SASS
+  - Is a Css preprocesser, an extension of Css that adds power and elegance to the basic language
+   
+   FEATURES THAT SASS GIVE US;
+   1.Variables- for reusable values such as colors,font-sizes,spacing etc.
+   2.Nesting - to nest selectors inside of one another, allowing us to write less code.
+   3.Operators - for mathematical operations right inside of CSS.
+   4.Partials and Imports - to write CSS in different files and importing them all into one single file.
+   5.Mixins - to write reusable pieces of CSS code.
+   6.Functions - similar to mixins, with the difference that they produce a value that can be used
+   7.Extends - to make different selectors inherit declarations that are common to all of them.
+
+          TWO SASS SYNTAX
+          1.Sass syntax - is indentation sensitive and does not use any curly braces and semicolons.
+          2.SCSS syntax - preserves the way that original CSS looks like.Uses curly braces and semi-colon.
+
+          Examples of SASS vARIABLE
+          - $color-primary
+          - alaways use the $ when defining variable.
+
+          - when list syles is none it means the bullets are out .
+          - clearfix is used to fix float problem.
+          */
+/*
+  HTML
+<nav>
+  <ul class="navigation">
+    <li><a href="#">About us</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="buttons">
+    <a  class="btn-main" href="#">Sign up</a>
+    <a  class="btn-hot" href="#">Get a quote</a>
+  </div>
+</nav>
+
+CSS
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-primary: #f9ed69; //yellow
+$color-secondary: #f08a5d; //orange
+$color-tertiary: #b83b5e; //pink
+$color-text-dark: #333;
+$color-text-light: #eee;
+
+$width-button: 150px;
+
+@mixin clearfix {
+  &::after {
+  content: "";
+  clear: both;
+  display: table;
+  }
+}
+
+@mixin style-link-text ($col){
+text-decoration: none;
+  color:$col;
+  text-transform: uppercase;  
+}
+  
+@function divide ($a,b$) {
+  return $a/$b;
+}
+
+nav {
+  margin: 30px; // divide(60,2)*1px
+  background-color: $color-primary;
+  @include clearfix;
+}
+
+.navigation {
+  list-style: none;
+  float: left;
+  
+  li {
+    display: inline-block;
+    margin-left: 30px;
+    //float: left; 
+    
+    &:first-child {
+      margin: 0;
+      } 
+    a:link {
+      @include style-link-text($color-text-dark)
+      
+    }
+  }
+}
+
+// .navigation li:first-child
+
+.buttons{
+  float: right;
+  }
+
+.btn-main:link,
+.btn-hot:link {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: $width-button;
+  
+  @include style-link-text($color-text-light);
+ 
+}
+
+.btn-main {
+  &:link {
+    background-color: $color-secondary;
+  }
+  &:hover {
+    background-color: darken($color-secondary, 15%);
+  }
+}
+
+.btn-hot {
+  &:link {
+    background-color: $color-tertiary;
+  }
+  &:hover {
+    background-color: lighten($color-tertiary, 10%);
+  }
+}
+*/
+/*
+INSTALL SASS LOCALLY
+- Use npm package called node sass
+- Node js allows developers to write and run javascript applications on the server
+//node package manager(npm)-simple command line interface that allows developers to install and manage packages on their local computers
+- install node using nodejs.org
+*/
+
+$color-primary: #7ed56f;
+$color-primary-light:  #55c57a;
+$color-primary-dark: #28b485;
+
+$color-grey-dark:#777;
+$color-white: #fff;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;  
+  
+}
+
+
+
+body {
+  font-family: "Lato" sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-grey-dark;
+  padding: 3rem;
+
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.header__logo-box{
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.header__logo{
+    height: 3.5rem;
+}
+
+/*.logo:hover {
+  animation: moveInRight 1s ease-out;
+}*/
+
+
+.header__text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary{
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+}
+
+.heading-primary--main{  
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    
+    
+    /*animation-iteration-count: 3;
+    animation-delay: 3s;*/
+}
+
+
+.heading-primary--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s  ease-out;
+    
+}
+
+
+ @keyframes moveInLeft{
+
+0% {
+  opacity: 0;
+  transform: translateX(-10rem);
+}
+
+80% {
+  transform: translateX(1rem);
+}
+
+100% {
+  opacity: 1;
+  transform: translate(0);
+}
+  
+}
+
+
+@keyframes moveInRight{
+
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  
+  80% {
+    transform: translateX(-1rem);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+    
+  }
+
+  @keyframes moveInBottom {
+
+    0% {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    
+    
+    100% {
+      opacity: 1;
+      transform: translate(0);
+    }
+      
+    }
+
+
+
+  .btn:link,
+  .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none; 
+    padding: 1.5rem 4rem;
+    display: inline-block; 
+    border-radius: 100px; 
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;   
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+  }
+
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2) ;
+  }
+
+
+  .btn--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+  }
+
+  .btn:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition:  all .4s;
+  }
+
+  .btn--white::after {
+    background-color: $color-white;
+  }
+
+ .btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6) ;
+  opacity: 0;
+ }
+
+ 
+
+  .btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+  }
+
+
+  
+
+  nav#nav div.pull-right .button {  
+    background-color: green;}  /*# inline-0, IDs-1, Classes-2, Elements-2*/
+  
+
+    a {
+      background-color: purple;
+    } /*# inline-0, IDs-0, Classes-0, Elements-1*/
+
+    #nav a.button:hover {
+      background-color: yellow;
+    }  /*#inline-0, IDs-1, Classes-2, Elements-1*/
+
+    
