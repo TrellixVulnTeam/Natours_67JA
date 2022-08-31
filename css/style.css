@@ -279,6 +279,36 @@ INSTALL SASS LOCALLY
 - install node using nodejs.org
 */
 /*Ampersand operator(&) basically copy the selector that we have*/
+/*
+BASIC RESPONSIVE DESIGN PRINCIPLES
+1.FLUID LAYOUT
+- To  allow webpage to adapt to the current viewport width even height
+- use % or vh/vw untill instead of px for elements that should adapt to viewport(usually layout)
+- use max-width instead of width
+- in css there are currently 3 major ways of laying out a webpage or web application.Below are the layout types
+
+A.FLOAT LAYOUTS - OLD WAYS OF BUILDING LAYOUTS OF ALL SIZES,USING THE FLOAT CSS PROPERTY 
+- Why use a float layout;even though flexbox and cdd grid are more modern ,every web developer should still know how float layouts works
+- As a professional developer, your job will include working with older CSS codebases which will contain float layouts.
+
+B.FLEXBOX - BASICALLY A LAYOUT THAT IS JUST A RAW/1-DIMENSIONAL ROW WITHOUT USING FLOATS,PERFECT FOR COMPONENTS LAYOUT.
+
+
+C.CSS GRID - 2-dimensional layout/raw-column.perfect for page layouts and complex components.
+
+
+2.RESPONSIVE UNITS
+- use rem unit instead of px for most lengths it will make it easy to scale the entire layout down or up automatically.
+
+3.FLEXIBLE IMAGES
+- BY DEFAULT IMAGEs dont scale automatically as we change the viewport ,so we need to fix that
+- alaways use % for image dimensions together with the max-width property
+
+4.MEDIA QUERIES
+- allows us to change styles on certain viewport width which we call breakpoints
+
+
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
