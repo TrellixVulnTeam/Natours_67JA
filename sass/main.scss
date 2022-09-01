@@ -312,26 +312,21 @@ C.CSS GRID - 2-dimensional layout/raw-column.perfect for page layouts and comple
 4.MEDIA QUERIES
 - allows us to change styles on certain viewport width which we call breakpoints
 
-
+BUILDING A CUSTOM GRID WITH FLOATS
 */
 
 @import "abstracts/functions";
 @import "abstracts/variables";
 @import "abstracts/mixins";
-
-
 @import "base/animation";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
-
-
 @import "pages/home";
-
 @import "components/button";
 
 @import "layout/header";
-
+@import "layout/grid";
 
   nav#nav div.pull-right .button {  
     background-color: green;}  /*# inline-0, IDs-1, Classes-2, Elements-2*/
