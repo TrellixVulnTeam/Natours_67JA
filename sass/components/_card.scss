@@ -56,8 +56,11 @@ transform: rotateY(180deg)
     }
 
     &:hover &__side--back {
+        
         transform: rotateY(0deg);
     }
+
+    
 
 
     //FRONT SIDE STYLING
