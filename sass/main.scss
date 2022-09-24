@@ -315,6 +315,28 @@ C.CSS GRID - 2-dimensional layout/raw-column.perfect for page layouts and comple
 BUILDING A CUSTOM GRID WITH FLOATS
 */
 
+
+
+/*RESPONSIVE DESIGN STRATEGIES: MAX-WIDTH AND MIN-WIDTH
+Max-width queries for desktop and min-width queries for mobile.
+Media queries dont add any importance or specifity to selectors ,so code orders matters-media queries at the end.
+Desktop-first_1200px
+min-width-minimum width at which media query starts to apply/600px.
+
+BREAKPOINTS - ARE THE VIEWPORT WIDTH WHICH WE WANT OUR DESIGN TO CHANGE OR WHERE WE WANT TO PUT OUR MEDIA QUERIES
+
+WAYS OF CHOOSING BREAKPOINTS
+1.BAD
+- OPTIMIZING FOR A SPECIFIC DEVICE eg iphone
+2.GOOD
+3.PERFECT
+
+LETS USE THE POWER OF SASS MIXINS TO WRITE MEDIA QUERIES
+-   How to use a powerful Sass mixing to write all our media queries.
+- How to use the @content and @if Sass directives.
+- Taking advantage of chrome Devtools for responsive design.
+*/
+
 @import "abstracts/functions";
 @import "abstracts/variables";
 @import "abstracts/mixins";
