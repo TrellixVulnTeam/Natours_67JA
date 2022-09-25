@@ -6,7 +6,11 @@
     position: relative;
     height: 50rem;
 
-
+   @include respond(tab-port) {
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+   }
 
     
     &:side {
@@ -133,7 +137,7 @@ transform: rotateY(180deg)
     }
 
     &__details {
-        padding: 3rem;
+        padding: 1  rem;
         ul {
 list-style: none;
 width: 80%;
