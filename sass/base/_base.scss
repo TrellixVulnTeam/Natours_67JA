@@ -28,6 +28,8 @@ html {
   }
 
 
+
+
 }
 
 
@@ -40,4 +42,10 @@ body {
   @include respond(tab-port) {
     font-size: 50%; //1rem = 8px,8/16
   }
+}
+
+
+::selection {
+  background-color: $color-white;
+  color:  orangered;
 }
