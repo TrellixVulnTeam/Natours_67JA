@@ -9,6 +9,9 @@ z-index: 9999;
 opacity: 0;
 visibility: hidden;
 
+ -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
+
 
 &__target {
     opacity: 1;
