@@ -335,6 +335,14 @@ LETS USE THE POWER OF SASS MIXINS TO WRITE MEDIA QUERIES
 -   How to use a powerful Sass mixing to write all our media queries.
 - How to use the @content and @if Sass directives.
 - Taking advantage of chrome Devtools for responsive design.
+
+AN OVERVIEW OF RESPONSIVE IMAGES
+1.WHAT ARE RESPONSIVE IMAGES ANYWAYS
+- The goal is to serve right image to the right screen size and device inorder to avoid downloading unnecesary large images on smaller screens.
+3cases to use responsive images
+- Resolution switching.
+- density switching.
+- Art direction.
 */
 
 @import "abstracts/functions";
